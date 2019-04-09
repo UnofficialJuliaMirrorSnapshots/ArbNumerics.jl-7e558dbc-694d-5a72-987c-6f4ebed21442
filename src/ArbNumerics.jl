@@ -47,6 +47,7 @@ export ArbNumber,
        addmul, submul, mulsub,
        square, cube, rsqrt, rcbrt, pow, root, loghypot,
        risingfactorial, doublefactorial,
+       tanpi, cotpi,
 
        # special functions
        agm1, agm,
@@ -73,7 +74,7 @@ import Base: IEEEFloat,
        UInt8, UInt16, UInt32, UInt64, UInt128,
        Int8, Int16, Int32, Int64, Int128,
        BigInt, BigFloat, Rational, Complex, real, imag, complex,
-       floatmax, floatmin, typemax, typemin,
+       floatmax, floatmin, typemax, typemin, maxintfloat,
        rationalize,
 
        iszero, isone, isinteger, isfinite, isinf, isnan, issubnormal,
@@ -98,7 +99,7 @@ import Base.Math:  max, min, minmax,
        sqrt, cbrt, hypot,
 
        (^), exp, log, expm1, log1p, log2, log10,
-       sin, cos, sincos, tan, csc, sec, cot, sinc,
+       sin, cos, sincos, tan, csc, sec, cot, sinc, sinpi, cospi,
        asin, acos, atan, acsc, asec, acot,
        sinh, cosh, tanh, csch, sech, coth,
        asinh, acosh, atanh, acsch, asech, acoth,
@@ -163,6 +164,7 @@ include("values/compare.jl")
 include("values/rounding.jl")
 include("values/random.jl")
 
+include("float/parametrics.jl")
 include("float/prearith.jl")
 include("float/arith.jl")
 include("float/arith_inplace.jl")
@@ -180,6 +182,7 @@ include("intervals/eps_ulp.jl")
 
 include("support/printf.jl")
 include("support/helptext.jl")
+
 
 function __init__()
     ccall(@libflint(flint_set_num_threads), Cvoid, (Cint,), Sys.CPU_THREADS)
