@@ -37,8 +37,6 @@ clear_acb(x::ArbComplex{P}) where {P} = ccall(@libarb(acb_clear), Cvoid, (Ref{Ar
 ArbComplex{P}(x::ArbComplex{P}) where {P} = x
 ArbComplex(x::ArbComplex{P}) where {P} = x
 
-float(x::ArbComplex{P}) where {P} = real(x)
-
 ArbComplex{P}(x::Missing) where {P} = missing
 ArbComplex(x::Missing) = missing
 
@@ -151,8 +149,6 @@ Base.Complex(x::ArbReal{P}) where {P} = ArbComplex(x)
 Base.Complex(re::ArbFloat{P}, im::ArbFloat{P}) where {P} = ArbComplex(re, im)
 Base.Complex(re::ArbReal{P}, im::ArbReal{P}) where {P} = ArbComplex(re, im)
 
-Base.complex(x::ArbFloat{P}) where {P} = ArbComplex(x)
-Base.complex(x::ArbReal{P}) where {P} = ArbComplex(x)
 Base.complex(re::ArbFloat{P}, im::ArbFloat{P}) where {P} = ArbComplex(re, im)
 Base.complex(re::ArbReal{P}, im::ArbReal{P}) where {P} = ArbComplex(re, im)
 
@@ -164,7 +160,6 @@ Base.complex(re::ArbReal{P}, im::ArbFloat{P}) where {P} = ArbComplex(re, ArbReal
 Base.Complex{ArbFloat{P}}(x::ArbComplex{P}) where {P} = x
 Base.Complex{ArbReal{P}}(x::ArbComplex{P}) where {P} = x
 
-Base.complex(::Type{ArbFloat{P}}) where {P} = ArbComplex{P}
 
 function ArbComplex{P}(x::T) where {P,T<:Integer}
     y = ArbReal{P}(x)
@@ -340,9 +335,6 @@ function Base.angle(x::ArbComplex{P}) where {P}
     T = ArbFloat{P}
     !(signbit(a) || signbit(T(pi) - a)) ? a : (signbit(a) ? zero(T) : T(pi))
 end
-
-magnitude(x::ArbComplex{P}) where {P} = hypot(reim(x)...)
-magnitude(x::T) where {T<:Complex} where {P} = hypot(reim(x)...)
 
 # needed for GenericSVD
 

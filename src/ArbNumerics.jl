@@ -141,6 +141,7 @@ include("libarb/Mag.jl")
 include("libarb/ArbFloat.jl")
 include("libarb/ArbReal.jl")
 include("libarb/ArbComplex.jl")
+include("support/complex.jl")
 
 include("support/random.jl")
 

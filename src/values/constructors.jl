@@ -128,27 +128,6 @@ for I in (:Int8, :Int16, :Int32, :Int64, :Int128)
   end
 end
 
-
-# parts
-
-function real(x::ArbComplex{P}) where {P}
-    z = ArbReal{P}()
-    ccall(@libarb(acb_get_real), Cvoid, (Ref{ArbReal}, Ref{ArbComplex}), z, x)
-    return z
-end
-
-function imag(x::ArbComplex{P}) where {P}
-    z = ArbReal{P}()
-    ccall(@libarb(acb_get_imag), Cvoid, (Ref{ArbReal}, Ref{ArbComplex}), z, x)
-    return z
-end
-
-function arg(x::ArbComplex{P}) where {P}
-    z = ArbReal{P}()
-    ccall(@libarb(acb_arg), Cvoid, (Ref{ArbReal}, Ref{ArbComplex}, Clong), z, x, P)
-    return z
-end
-
 # retype
 
 ArbFloat(x::ArbReal{P}) where {P} = ArbFloat{P}(x)
