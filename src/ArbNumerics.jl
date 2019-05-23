@@ -106,7 +106,7 @@ import Base.Math:  max, min, minmax,
 
        clamp, clamp!
 
-import Random.rand
+import Random: rand, randn
 
 import SpecialFunctions: gamma, lgamma, lfact, digamma, invdigamma, polygamma, trigamma,
      beta, lbeta, sinint, cosint,
@@ -120,7 +120,7 @@ using  GenericSVD
 using  LinearAlgebra
 import LinearAlgebra: tr, det, transpose, transpose!, norm, lu, ldlt,
                       cholesky, tril, triu, eigvals, svdvals, floatmin2,
-                      mul!, rmul!, lmul!
+                      mul!, rmul!, lmul!, eigvecs
 
 export tr, det, transpose, transpose!, norm, mul!, lmul!, rmul!, lu, ldlt,
        cholesky, tril, tiru, eigvals, svdvals
@@ -129,6 +129,7 @@ import Base.MathConstants: π, ℯ, γ, φ, catalan
 
 using Libdl
 using Random
+using Random: SamplerType, SamplerTrivial, CloseOpen01
 
 include("support/arblib.jl")
 include("support/abstractions.jl")
@@ -181,6 +182,8 @@ include("intervals/intervalparts.jl")
 include("intervals/complex_intervalparts.jl")
 include("intervals/eps_ulp.jl")
 
+include("support/minprec.jl")
+include("support/linearalgebra.jl")
 include("support/printf.jl")
 include("support/helptext.jl")
 

@@ -1,7 +1,3 @@
-using Random
-using Random: SamplerType, SamplerTrivial, CloseOpen01
-import Random: rand
-
 function rand(::AbstractRNG, ::SamplerTrivial{CloseOpen01{T}}) where {P, T<:ArbFloat{P}}
     oldprec = precision(BigFloat)
     setprecision(BigFloat, P+9)
@@ -38,3 +34,41 @@ end
     P = workingprecision(ArbFloat)
     return rand(ArbComplex{P})
 end
+
+function randn(rng::AbstractRNG, ::Type{ArbFloat{N}}) where {N}
+    urand1, urand2 = rand(ArbFloat{N}, 2)
+    urand1 = urand1 + urand1 - 1
+    urand2 = urand2 + urand2 - 1
+    s = urand1*urand1 + urand2*urand2
+    
+    while s >= 1 || s === 0
+        urand1, urand2 = rand(ArbFloat{N}, 2)
+        urand1 = urand1 + urand1 - 1
+        urand2 = urand2 + urand2 - 1
+        s = urand1*urand1 + urand2*urand2
+    end
+    
+    s = sqrt( -log(s) / s )
+    return (urand1 + urand2) * s
+end
+
+randn(rng::AbstractRNG, ::Type{ArbFloat})  = randn(rng, ArbFloat{workingprecision(ArbFloat)})
+
+function randn(rng::AbstractRNG, ::Type{ArbReal{N}}) where {N}
+    urand1, urand2 = rand(ArbReal{N}, 2)
+    urand1 = urand1 + urand1 - 1
+    urand2 = urand2 + urand2 - 1
+    s = urand1*urand1 + urand2*urand2
+    
+    while s >= 1 || s === 0
+        urand1, urand2 = rand(ArbReal{N}, 2)
+        urand1 = urand1 + urand1 - 1
+        urand2 = urand2 + urand2 - 1
+        s = urand1*urand1 + urand2*urand2
+    end
+    
+    s = sqrt( -log(s) / s )
+    return (urand1 + urand2) * s
+end
+
+randn(rng::AbstractRNG, ::Type{ArbReal})  = randn(rng, ArbReal{workingprecision(ArbReal)})
