@@ -56,7 +56,9 @@ export ArbNumber,
        airyai, airyaiprime, airybi, airybiprime,
        besselj, besselj0, besselj1, bessely, bessely0, bessely1, besseli, besselk,
        elliptick, elliptice, ellipticpi, ellipticf,
-       ellipticp, ellipticzeta, ellipticsigma,
+       elliptic_k, elliptic_e, elliptic_pi, elliptic_f, # modulus^2 
+       ellipticrf, ellipticrg, ellipticrj,
+       # ellipticp, ellipticzeta, ellipticsigma,
        zeta, eta, xi,                  # Reimann
        lambertw,
        π, ℯ, γ, φ, catalan,
@@ -120,7 +122,7 @@ using  GenericSVD
 using  LinearAlgebra
 import LinearAlgebra: tr, det, transpose, transpose!, norm, lu, ldlt,
                       cholesky, tril, triu, eigvals, svdvals, floatmin2,
-                      mul!, rmul!, lmul!, eigvecs
+                      mul!, rmul!, lmul!, eigvecs, svd, eigen
 
 export tr, det, transpose, transpose!, norm, mul!, lmul!, rmul!, lu, ldlt,
        cholesky, tril, tiru, eigvals, svdvals
