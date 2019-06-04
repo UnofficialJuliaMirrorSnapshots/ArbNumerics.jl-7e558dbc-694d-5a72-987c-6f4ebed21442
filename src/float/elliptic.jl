@@ -6,6 +6,7 @@
 # Computes the complete elliptic integral of the first kind  K(m)
 
 function elliptick(modulus::ArbComplex{P}) where {P}
+    isone(modulus) && return ArbComplex{P}(Inf,0)
     result = ArbComplex{P}()
     ccall(@libarb(acb_elliptic_k), Cvoid, (Ref{ArbComplex}, Ref{ArbComplex}, Cint), result, modulus, P)
     return result
