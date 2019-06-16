@@ -57,12 +57,14 @@ export ArbNumber,
        ei, si, ci, shi, chi,
        airyai, airyaiprime, airybi, airybiprime,
        besselj, besselj0, besselj1, bessely, bessely0, bessely1, besseli, besselk,
-       elliptick, elliptice, ellipticpi, ellipticf,
-       elliptic_k, elliptic_e, elliptic_pi, elliptic_f, # modulus^2 
-       ellipticrf, ellipticrg, ellipticrj,
-       # ellipticp, ellipticzeta, ellipticsigma,
+       ellipk, ellipe, ellippi, ellipf,
+       ellip_k, ellip_e, ellip_pi, ellip_f, # modulus^2 
+       elliprf, elliprg, elliprj,
+       weierstrass_p, weierstrass_invp, weierstrass_zeta, weierstrass_sigma,
        zeta, eta, xi,                  # Reimann
        lambertw,
+       hypgeom0f1, hypgeom1f1, hypgeom2f1,
+       hypgeom0f1reg, hypgeom1f1reg, hypgeom2f1reg,
        π, ℯ, γ, φ, catalan,
 
        # special linear algebra
@@ -177,9 +179,11 @@ include("float/arith_inplace.jl")
 include("float/morearith.jl")
 include("float/muladd.jl")
 include("float/elementary.jl")
-include("float/special.jl")
-include("float/special2.jl")
+include("float/otherspecial.jl")
+include("float/bessel.jl")
+include("float/airy.jl")
 include("float/elliptic.jl")
+include("float/hypergeometric.jl")
 include("float/export_fallbacks.jl")
 
 include("float/float64.jl")

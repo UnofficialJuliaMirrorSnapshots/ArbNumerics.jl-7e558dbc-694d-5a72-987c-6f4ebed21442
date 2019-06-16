@@ -179,6 +179,10 @@ Consider using ArbReals instead of ArbFloats if you want your results to be rock
 - `sinh`, `cosh`, `tanh`, `csch`, `sech`, `coth`
 - `asinh`, `acosh`, `atanh`
 
+#### arithmetic-geometric mean
+
+- `agm`, `agm1`
+
 #### gamma functions
 
 - `gamma`, `lgamma`
@@ -199,16 +203,23 @@ Consider using ArbReals instead of ArbFloats if you want your results to be rock
 - `airyai`, `airyaiprime`
 - `airybi`, `airybiprime`
 
-#### arithmetic-geometric mean
+#### elliptic integrals
 
-- `agm`, `agm1`
+- `ellipe`, `ellipk`
+- `ellipp`, `ellippi`
+- `ellipzeta`, `ellipsigma`
 
-##### elliptic functions
+#### elliptic functions
 
-- `elliptice`, `elliptick`
-- `ellipticp`, `ellipticpi`
-- `ellipticzeta`, `ellipticsigma`
+- `weierstrass_p`, `weierstrass_invp`
+- `weierstrass_zeta`, `weierstrass_sigma`
 
+#### hypergeometric functions
+    
+- `hypgeom0f1`, `hypgeom1f1`, `hypgeom1f2`  
+- `hypgeom0f1reg`, `hypgeom1f1reg`, `hypgeom1f2reg`
+   - regularized
+   
 #### other special functions
 
 - `ei`, `si`, `ci`
@@ -285,7 +296,7 @@ This work develops parts the Arb C library within Julia.  It is entirely depende
 
 ## Alternatives
 
-ValidatedNumerics.jl and other packages available at [JuliaIntervals](https://github.com/JuliaIntervals) provide an alternative approach to developing correctly contained results.  Those packages are very good and worthwhile when you do not require multiprecision numerics.
+For a numeric types like `Float64` and `ComplexF64` with about twice their precision, [Quadmath.jl](https://github.com/JuliaMath/Quadmath.jl) exports `Float128` and `ComplexF128`.  For almost as much precision with better performance, [DoubleFloats.jl](https://github.com/JuliaMath/DoubleFloats.jl) exports `Double64` and `ComplexDF64`. ValidatedNumerics.jl and other packages available at [JuliaIntervals](https://github.com/JuliaIntervals) provide an alternative approach to developing correctly contained results.  Those packages are very good and worthwhile when you do not require multiprecision numerics.
 
 ----
 ## notes

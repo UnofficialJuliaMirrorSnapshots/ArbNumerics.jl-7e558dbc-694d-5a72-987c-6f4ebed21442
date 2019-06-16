@@ -18,8 +18,31 @@ const NO_RADIUS = ARB_STR_NO_RADIUS
 end
 
 function trimzeros(str::String)
-    m =  n = length(str)
-    n === 0 && return str
+    if occursin('e', str)
+        str1, str2 = String.(split(str, 'e'))
+        if occursin('.', str1)
+            str1a, str1b = String.(split(str1, '.'))
+            str1b = trimallzeros(str1b)
+            if str1b === ""
+                str1b = "0"
+            end    
+            str1 = join((str1a, str1b), '.')
+        end
+        str = join((str1, str2), 'e')
+    elseif occursin('.', str)   
+        str1a, str1b = String.(split(str, '.'))
+        str1b = trimallzeros(str1b)
+        if str1b === ""
+            str1b = "0"
+        end    
+        str = join((str1a, str1b), '.')
+    end        
+    return str
+end
+            
+function trimallzeros(str::String)
+    m = n = length(str)
+    (n === 0 || str[n] !== '0') && return str
     while n>1 && str[n] === '0'
         n -= 1
     end
