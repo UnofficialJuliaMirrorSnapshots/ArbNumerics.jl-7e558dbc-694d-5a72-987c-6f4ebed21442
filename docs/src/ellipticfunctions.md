@@ -1,26 +1,27 @@
-## Weierstrass's Elliptic Functions
+## Weierstrass Functions
 
-- `weierstrass_p(z, tau)`
-    
-     |       Weierstrass's elliptic function                             |
-     |:-----------------------------------------------------------------:|
-     |  <img src="assets/elliptic_p.png" alt="elliptic_p" width="500">   |
+- Weierstrass elliptic function
 
-- `weierstrass_invp(z, tau)`
+    - `weierstrass_p(z, tau)`
     
-     |       inverse of Weierstrass's elliptic function                        |
-     |:-----------------------------------------------------------------------:|
-     |  <img src="assets/elliptic_invp.png" alt="elliptic_invp" width="500">   |
+![Weierstrass_p](assets/Weierstrass_p.png)     
 
-- `weierstrass_zeta(z, tau)`
-    
-     |       Weierstrass zeta function                                         |
-     |:-----------------------------------------------------------------------:|
-     |  <img src="assets/elliptic_zeta.png" alt="elliptic_zeta" width="500">   |
 
-- `weierstrass_sigma(z, tau)`
+- Weierstrass inverse elliptic function
+
+    - `weierstrass_invp(z, tau)`
     
-     |       Weierstrass sigma function                                          |
-     |:-------------------------------------------------------------------------:|
-     |  <img src="assets/elliptic_sigma.png" alt="elliptic_sigma" width="500">   |
+![Weierstrass_pinv](assets/Weierstrass_pinv.png)
+
+- Weierstrass zeta function
+
+    - `weierstrass_zeta(z, tau)`
+    
+![Weierstrass_zeta](assets/Weierstrass_zeta.png)
+
+- Weierstrass sigma function
+
+    - `weierstrass_sigma(z, tau)`
+    
+![Weierstrass_sigma](assets/Weierstrass_sigma.png)
 
