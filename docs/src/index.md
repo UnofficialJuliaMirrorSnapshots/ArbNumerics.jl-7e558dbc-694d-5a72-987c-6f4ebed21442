@@ -12,25 +12,3 @@
 
 - A Julian perspective on Frederik Johansson's [Arb C library](http://arblib.org/)
 
-
-# image test
-
-![tst1](assets/Weierstrass_pinv.PNG)
-
-----
-
-![tst2](assets/Weierstrass_pinv_halfdpi.png)
-
------
-
-![tst3](assets/Weierstrass_pinv_halfpixels.png)
-
------
-
-![tst4](assets/Weierstrass_pinv_halfandhalf.png)
-
------
-
-![tst5](assets/Weierstrass_pinvsmall.png)
-
------
