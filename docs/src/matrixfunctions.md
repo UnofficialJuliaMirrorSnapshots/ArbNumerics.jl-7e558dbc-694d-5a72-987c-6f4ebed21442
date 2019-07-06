@@ -1,17 +1,15 @@
-## functions
+## Matrix Functions
 
 #### `using ArbNumerics, GenericSchur, GenericSVD, LinearAlgebra`
 
 - `det`, `tr`
 - `transpose`, `adjoint`, `inv`
+- `exp`
+
 - `.+`, `.-`, `.*`, `./`           ( element op element )
 - `+`, `-`, `*`, `/`, `\`          ( matrix  op matrix  )
 
 - `lu`, `qr`, `factorize`
-- `eigvals`, `svdvals`
-    - `Matrix{ArbFloat | ArbReal}`
-- `svd`
-    - `Matrix{ArbFloat | ArbReal | ArbComplex}`
 
 ----
 

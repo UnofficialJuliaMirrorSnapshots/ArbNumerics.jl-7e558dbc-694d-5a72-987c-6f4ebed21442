@@ -39,8 +39,11 @@ const ExtraBits = Ref(BitsOfStability + BitsOfAbsorption)
 @inline evincedbits(workingbits) = workingbits - ExtraBits.x
 
 
-# default precision
-const MINIMUM_PRECISION = 24
+# preset precisions
+const MINIMUM_PRECISION_BASE2 = 24
+const MINIMUM_PRECISION_BASE10 = 8
+const MINIMUM_PRECISION = MINIMUM_PRECISION_BASE2
+
 const DEFAULT_PRECISION = Ref(workingbits(128 - ExtraBits.x))
 
 # these typed significands have this many signficant bits
@@ -110,8 +113,27 @@ end
 
 extrabits() = ExtraBits.x
 
+extrabits(::Type{ArbFloat}) = ExtraBits.x
+extrabits(::Type{ArbReal}) = ExtraBits.x
+extrabits(::Type{ArbComplex}) = ExtraBits.x
+
+extrabits(::Type{ArbFloat{P}}) where {P} = extrabits(ArbFloat)
+extrabits(::Type{ArbReal{P}}) where {P} = extrabits(ArbReal)
+extrabits(::Type{ArbComplex{P}}) where {P} = extrabits(ArbComplex)
+
+extrabits(x::ArbFloat{P}) where {P} = extrabits(ArbFloat)
+extrabits(x::ArbReal{P}) where {P} = extrabits(ArbReal)
+extrabits(x::ArbComplex{P}) where {P} = extrabits(ArbComplex)
+
 function setextrabits(n::Int)
-    ExtraBits.x = max(0,n)
-    DEFAULT_PRECISION.x = workingbits(128 - ExtraBits.x)
+    n >=0 || throw(DomainError("extrabits must be >= 0"))
+    priorextra = extrabits()
+    priorworking = workingprecision(ArbFloat)
+    newextra = n
+    newworking = priorworking + (newextra - priorextra)
+    ExtraBits.x = newextra
+    DEFAULT_PRECISION.x = newworking
     return ExtraBits.x
 end
+
+setextrabits(::Type{T}, n::Int) where {T<:ArbNumber} = setextrabits(n)

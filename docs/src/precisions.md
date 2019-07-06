@@ -1,6 +1,8 @@
+#Precision
+
 ## minimum precision
 
-The minimum precision is 24 significant bits.
+The minimum precision is 24 significant bits, or 8 significant digits.
 
 ## working precision
 
@@ -26,7 +28,7 @@ trailing bits, start using the package this way:
 
 ```julia
 using ArbNumerics
-setextrabits(32)
+setextrabits(48)
 ```
 
 ## rounded precision
@@ -41,11 +43,13 @@ Reliabile computations presume you __not__ alter it midstream.
 ## finding precisions 
 
 The number of displayed bits is given by any of:   
-`precision(ArbFloat), precision(ArbReal), precision(ArbComplex)`    
+`precision(ArbFloat), precision(ArbReal), precision(ArbComplex)`.        
 All of these are kept in sync.
 
 The number of working bits is given by any of:    
-`workingprecision(ArbFloat), workingprecision(ArbReal), workingprecision(ArbComplex)`    
+`workingprecision(ArbFloat), workingprecision(ArbReal), workingprecision(ArbComplex)`.        
 All of these are kept in sync.
 
-The number of `extrabits` is given by `extrabits()`.
+The number of `extrabits` is given by any of:    
+`extrabits(ArbFloat), extrabits(ArbReal), extrabits(ArbComplex)`.    
+All of these are kept in sync.

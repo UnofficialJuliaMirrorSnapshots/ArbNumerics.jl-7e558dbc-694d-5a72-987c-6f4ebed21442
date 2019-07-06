@@ -7,12 +7,12 @@
 
 For multiprecision numerical computing using values with 25..2,500 digits. With arithmetic and higher level mathematics, this package offers you the best balance of performance and accuracy.
 
-This package uses the Arb C Library, and adapts some work from Nemo.jl: [_acknowledgements_](https://github.com/JeffreySarnoff/ArbNumerics.jl/blob/master/README.md#acknowledgements).
+This package uses the [Arb C Library](http://arblib.org/index.html), and adapts some C library interface work from [Nemo](https://github.com/wbhart/Nemo.jl) (see [_below_](https://github.com/JeffreySarnoff/ArbNumerics.jl/blob/master/README.md#acknowledgements)).
 
 
 -----
 
-[![Travis Build Status](https://travis-ci.org/JeffreySarnoff/ArbNumerics.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/ArbNumerics.jl)&nbsp;&nbsp;&nbsp;[![Docs](https://img.shields.io/badge/docs-stable-blue.svg)](http://jeffreysarnoff.github.io/ArbNumerics.jl/stable/)
+[![Travis Build Status](https://travis-ci.org/JeffreySarnoff/ArbNumerics.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/ArbNumerics.jl)&nbsp;&nbsp;&nbsp;[![Docs](https://img.shields.io/badge/docs-stable-blue.svg)](http://jeffreysarnoff.github.io/ArbNumerics.jl/dev/)
 
 
 ----
