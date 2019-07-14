@@ -1,4 +1,17 @@
 
+## constituents
+
+- `modf`, `fmod` (_inv of modf_)
+
+## integer related
+
+- `floor`, `ceil`, `trunc`
+- `round`
+
+- `rem`, `mod`
+- `div`, `cld`, `fld`
+- `divrem`, `fldmod`
+
 ## arithmetic functions
 
 - `+`,`-`, `*`, `/`
@@ -7,7 +20,7 @@
 - `factorial`, `doublefactorial`, `risingfactorial`
 - `binomial`
 
-## complex constituent functions
+## complex constituents
 
 - `real`, `imag`
 - `angle`, `magnitude`
@@ -59,9 +72,9 @@ _All of the following functions are available for `ArbFloat`, `ArbReal` and `Arb
 
 ## elliptic functions
 
-- `elliptice`, `elliptick`, `ellipticpi`     (complete and incomplete integrals)
-- `elliptic_e`, `elliptic_k`, `elliptic_pi`  (squares the modulus)
-- `ellipticrf`, `ellipticrg`, `ellipticrj`   (Carleson's symmetric integrals)
+- `elliptic_e`, `elliptic_k`, `elliptic_pi`     (complete and incomplete integrals)
+- `elliptic_e2`, `elliptic_k2`, `elliptic_pi2`  (squares the modulus)
+- `elliptic_rf`, `elliptic_rg`, `elliptic_rj`   (Carleson's symmetric integrals)
 
 ## other special functions
 

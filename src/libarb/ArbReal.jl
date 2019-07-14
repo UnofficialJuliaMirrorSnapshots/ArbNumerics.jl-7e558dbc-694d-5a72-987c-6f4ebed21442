@@ -150,6 +150,47 @@ end
 
 trunc(::Type{T}, x::ArbReal{P}) where {P, T} = T(trunc(x))
 
+
+function modf(x::ArbReal{P}) where {P}
+    ipart = trunc(x)
+    fpart = x - ipart
+    return (fpart, ipart)
+end
+
+fmod(fpartipart::Tuple{ArbReal{P}, ArbReal{P}}) where {P} =
+    fpartipart[1] + fpartipart[2]
+fmod(fpart::ArbReal{P}, ipart::ArbReal{P}) where {P}=
+    fpart + ipart
+
+
+div(x::ArbReal{P}, y::ArbReal{P}) where {P} =
+    trunc(x / y)
+
+rem(x::ArbReal{P}, y::ArbReal{P}) where {P} =
+    x - (div(x,y) * y)
+
+function divrem(x::ArbReal{P}, y::ArbReal{P}) where {P}
+    dv = div(x,y)
+    rm = x - (dv * y)
+    return (dv, rm)
+end
+
+
+fld(x::ArbReal{P}, y::ArbReal{P}) where {P} =
+    floor(x / y)
+
+mod(x::ArbReal{P}, y::ArbReal{P}) where {P} =
+    x - (fld(x,y) * y)
+
+function fldmod(x::ArbReal{P}, y::ArbReal{P}) where {P}
+    fd = fld(x,y)
+    md = x - (fd * y)
+    return (fd, md)
+end
+
+cld(x::ArbReal{P}, y::ArbReal{P}) where {P} =
+    ceil(x / y)    
+
 function midpoint(x::ArbReal{P}) where {P}
     z = ArbReal{P}()
     ccall(@libarb(arb_get_mid_arb), Cvoid, (Ref{ArbReal}, Ref{ArbReal}), z, x)

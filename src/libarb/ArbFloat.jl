@@ -168,7 +168,45 @@ trunc(::Type{T}, x::ArbFloat{P}) where {P, T} = T(trunc(x))
 midpoint(x::ArbFloat{P}) where {P} = x
 radius(x::ArbFloat{P}) where {P} = zero(ArbFloat{P})
 
+function modf(x::ArbFloat{P}) where {P}
+    ipart = trunc(x)
+    fpart = x - ipart
+    return (fpart, ipart)
+end
 
+fmod(fpartipart::Tuple{ArbFloat{P}, ArbFloat{P}}) where {P} =
+    fpartipart[1] + fpartipart[2]
+fmod(fpart::ArbFloat{P}, ipart::ArbFloat{P}) where {P} =
+    fpart + ipart
+
+div(x::ArbFloat{P}, y::ArbFloat{P}) where {P} =
+    trunc(x / y)
+
+rem(x::ArbFloat{P}, y::ArbFloat{P}) where {P} =
+    x - (div(x,y) * y)
+
+function divrem(x::ArbFloat{P}, y::ArbFloat{P}) where {P}
+    dv = div(x,y)
+    rm = x - (dv * y)
+    return (dv, rm)
+end
+
+fld(x::ArbFloat{P}, y::ArbFloat{P}) where {P} =
+    floor(x / y)    
+
+mod(x::ArbFloat{P}, y::ArbFloat{P}) where {P} =
+    x - (fld(x,y) * y)
+
+function fldmod(x::ArbFloat{P}, y::ArbFloat{P}) where {P}
+    fd = fld(x,y)
+    md = x - (fd * y)
+    return (fd, md)
+end
+
+cld(x::ArbFloat{P}, y::ArbFloat{P}) where {P} =
+    ceil(x / y)    
+
+    
 # a type specific hash function helps the type to 'just work'
 const hash_arbfloat_lo = (UInt === UInt64) ? 0x37e642589da3416a : 0x5d46a6b4
 const hash_0_arbfloat_lo = hash(zero(UInt), hash_arbfloat_lo)
