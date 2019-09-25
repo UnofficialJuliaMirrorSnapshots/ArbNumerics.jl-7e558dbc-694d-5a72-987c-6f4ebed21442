@@ -86,6 +86,44 @@ for (A,F) in ((:agm, :arb_agm), )
     end
 end
 
+function polylog(s::ArbComplex{P}, z::ArbComplex{P}, prec::Int=P) where {P}
+    w = ArbComplex{P}()
+    ccall(@libarb(acb_polylog), Cvoid, (Ref{ArbComplex}, Ref{ArbComplex}, Ref{ArbComplex}, Cint), w, s, z, P)
+    return w
+end
+
+function polylog(s::ArbReal{P}, z::ArbReal{P}, prec::Int=P) where {P}
+    sc = ArbComplex(s)
+    zc = ArbComplex(z)
+    wc = polylog(sc, zc, prec)
+    return wc
+end
+
+function polylog(s::ArbFloat{P}, z::ArbFloat{P}, prec::Int=P) where {P}
+    sc = ArbComplex(s)
+    zc = ArbComplex(z)
+    wc = polylog(sc, zc, prec)
+    return wc
+end
+
+function polylog(s::Int, z::ArbComplex{P}, prec::Int=P) where {P}
+    w = ArbComplex{P}()
+    ccall(@libarb(acb_polylog_si), Cvoid, (Ref{ArbComplex}, Cint, Ref{ArbComplex}, Cint), w, s, z, P)
+    return w
+end
+
+function polylog(s::Int, z::ArbReal{P}, prec::Int=P) where {P}
+    zc = ArbComplex(z)
+    wc = polylog(s, zc, prec)
+    return wc
+end
+
+function polylog(s::Int, z::ArbFloat{P}, prec::Int=P) where {P}
+    zc = ArbComplex(z)
+    wc = polylog(s, zc, prec)
+    return wc
+end
+
 #=
 for (A,F) in ((:ellipticp, :acb_elliptic_p), (:ellipticpi, :acb_elliptic_pi),
               (:ellipticzeta, :acb_elliptic_zeta), (:ellipticsigma, :acb_elliptic_sigma),
