@@ -131,7 +131,7 @@ for (F,A) in ((:floor, :arf_floor), (:ceil, :arf_ceil))
             ccall(@libarb($A), Cvoid, (Ref{ArbFloat}, Ref{ArbFloat}), z, x)
             return ArbReal{P}(z)
         end
-        $F(::Type{T}, x::ArbReal{P}) where {P,T} = T($F(x))
+        $F(::Type{T}, x::ArbReal{P}) where {P,T<:Integer} = T($F(x))
     end
 end
 
@@ -142,7 +142,7 @@ function trunc(x::ArbReal{P}) where {P}
     return result
 end
 
-trunc(::Type{T}, x::ArbReal{P}) where {P, T} = T(trunc(x))
+trunc(::Type{T}, x::ArbReal{P}) where {P, T<:Integer} = T(trunc(x))
 
 
 function modf(x::ArbReal{P}) where {P}

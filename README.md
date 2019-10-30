@@ -232,6 +232,9 @@ Consider using ArbReals instead of ArbFloats if you want your results to be rock
 - `zeta`, `eta`, `xi`    # Reimann
 - `lambertw`, `polylog`
 
+#### transforms
+
+- `dft`, `inverse_dft`
 
 ## Intervals
 
